@@ -73,7 +73,8 @@ namespace :benchmark do
 
   desc "Build benchmark index"
   task :index, [:commit] do |t, args|
-    require 'linguist/language'
+    # Need to 'load' as this forces a class reload (as it changes)
+    load 'linguist/language.rb'
 
     results = Hash.new
     languages = Dir.glob('benchmark/samples/*')
